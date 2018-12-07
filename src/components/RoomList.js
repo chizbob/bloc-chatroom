@@ -19,6 +19,12 @@ class RoomList extends Component {
      });
     }
 
+    newRoom(){
+      this.roomsRef.push({
+          name: newRoomName
+      });
+    }
+
     render(){
       return(
         <div className = "roomList">
@@ -30,6 +36,7 @@ class RoomList extends Component {
             </div>)
           }
         </div>
+        <button onClick={this.newRoom}>"New Room"</button>
       )
     }
 }
