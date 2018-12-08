@@ -17,10 +17,15 @@ import RoomList from './components/RoomList';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container-fluid">
+        <div className="jumbotron">
+            <h1 className="display-4">Welcome to Bloc Chatrooms!</h1>
+            <p className="lead">Enjoy fun chats with your Bloc buddies.</p>
+            <hr className="my-4"/>
+        </div>
         <RoomList
-        firebase = {firebase}
-         />
+            firebase = {firebase}
+            />
       </div>
     );
   }
