@@ -25,8 +25,7 @@ class App extends Component {
 
     handleActiveRoom(room){
       this.setState({
-        activeRoomName: '',
-        activeRoomId: ''
+        activeRoom: room
       })
     }
 
@@ -42,12 +41,12 @@ class App extends Component {
               <span>
                   <RoomList className=".col-sm-6."
                     firebase = {firebase}
-                    activeRoomId={this.state.activeRoomId}/>
+                    activeRoom={this.handleActiveRoom}/>
               </span>
               <span>
                   <MessageList className="col"
                     firebase = {firebase}
-                    activeRoomName={this.state.activeRoomName}/>
+                    activeRoom={this.handleActiveRoom}/>
               </span>
           </div>
         </div>
