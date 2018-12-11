@@ -19,11 +19,11 @@ class App extends Component {
     constructor(){
       super();
       this.state = {
-        activeRoom: null
-      }
+        	activeRoom: ''
+     };
     }
 
-    handleActiveRoom(room){
+    setActiveRoom(room){
       this.setState({
         activeRoom: room
       })
@@ -37,16 +37,24 @@ class App extends Component {
               <p className="lead">Enjoy fun chats with your Bloc buddies.</p>
               <hr className="my-4"/>
           </div>
-          <div className="row justify-content-left">
+          <div className="container">
               <span>
-                  <RoomList className=".col-sm-6."
+                  <RoomList className="room-list"
                     firebase = {firebase}
-                    activeRoom={this.handleActiveRoom}/>
+                    isActive={this.state.isActive}
+                		setActiveRoom={this.setActiveRoom.bind(this)}
+                    activeRoom={this.state.activeRoom}
+                		createRoom={(e) => this.createRoom(e)}
+                		handleChange={(e) => this.handleChange}
+                		handleClick={(e) => this.handleClick}
+                		roomMessages={this.state.roomMessages}/>
               </span>
               <span>
-                  <MessageList className="col"
+                  <MessageList className="message-list"
                     firebase = {firebase}
-                    activeRoom={this.handleActiveRoom}/>
+                    isActive={this.state.isActive}
+    		            activeRoom={this.state.activeRoom}
+		                messages={this.state.messages}/>
               </span>
           </div>
         </div>
