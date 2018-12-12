@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import logo from './logo.svg';
 import './App.css';
 import RoomList from './components/RoomList';
+import MessageList from './components/MessageList';
 
   var config = {
     apiKey: "AIzaSyAZ-nh81214MgEN6E0-MO-rr18njhp0f8k",
@@ -16,15 +16,48 @@ import RoomList from './components/RoomList';
 
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <RoomList
-        firebase = {firebase}
-         />
-      </div>
-    );
-  }
+    constructor(){
+      super();
+        this.state= {
+          activeRoom: ''
+      };
+      this.setActiveRoom = this.setActiveRoom.bind(this);
+    }
+//use room.key as an identifier for active room
+    setActiveRoom(index) {
+      this.setState({
+        activeRoom: index
+      });
+      console.log(this.state.activeRoom);
+    }
+
+    render() {
+      return (
+        <div className="container-fluid">
+          <div className="jumbotron">
+              <h1 className="display-4">Welcome to Bloc Chatrooms!</h1>
+              <p className="lead">Enjoy fun chats with your Bloc buddies.</p>
+              <hr className="my-4"/>
+          </div>
+          <div className="container">
+              <span>
+                  <RoomList className="room-list"
+                    firebase = {firebase}
+//passing down setActiveRoom function and activeRoom state to RoomList
+                    setActiveRoom={this.setActiveRoom}
+                    activeRoom={this.state.activeRoom}/>
+              </span>
+              <span>
+                  <MessageList className="message-list"
+                    firebase = {firebase}
+//passing down setActiveRoom function and activeRoom state to MessageList
+                    setActiveRoom={this.setActiveRoom}
+                    activeRoom={this.state.activeRoom}/>
+              </span>
+          </div>
+        </div>
+      );
+    }
 }
 
 export default App;
