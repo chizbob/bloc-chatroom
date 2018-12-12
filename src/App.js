@@ -24,9 +24,9 @@ class App extends Component {
       this.setActiveRoom = this.setActiveRoom.bind(this);
     }
 //use room.key as an identifier for active room
-    setActiveRoom(index) {
+    setActiveRoom(room) {
       this.setState({
-        activeRoom: index
+        activeRoom: room.key
       });
       console.log(this.state.activeRoom);
     }

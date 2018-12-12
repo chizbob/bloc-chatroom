@@ -29,7 +29,7 @@ class MessageList extends Component {
       return(
         <div className="messageList">
            {
-             this.state.messages.filter(a => a.roomId === this.state.activeRoomId).map( (message) =>
+             this.state.messages.filter(a => a.roomId === this.state.activeRoom).map( (message) =>
 	               <span key={message.key}>
                       <p>{message.username}</p>
                       <p>{message.content}</p>
