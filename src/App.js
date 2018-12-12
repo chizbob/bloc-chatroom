@@ -18,17 +18,17 @@ import MessageList from './components/MessageList';
 class App extends Component {
     constructor(){
       super();
-      this.state = {
-        activeRoom: []
-      }
+        this.state= {
+          activeRoom: ''
+      };
+      this.setActiveRoom = this.setActiveRoom.bind(this);
     }
-
-    setActiveRoom(e){
-      const activeRoom = e.target.key;
-      console.log(activeRoom);
+//use room.key as an identifier for active room
+    setActiveRoom(index) {
       this.setState({
-        activeRoom: activeRoom
+        activeRoom: index
       });
+      console.log(this.state.activeRoom);
     }
 
     render() {
@@ -43,11 +43,16 @@ class App extends Component {
               <span>
                   <RoomList className="room-list"
                     firebase = {firebase}
-                		setActiveRoom={e => this.setActiveRoom(e)}/>
+//passing down setActiveRoom function and activeRoom state to RoomList
+                    setActiveRoom={this.setActiveRoom}
+                    activeRoom={this.state.activeRoom}/>
               </span>
               <span>
                   <MessageList className="message-list"
-                    firebase = {firebase}/>
+                    firebase = {firebase}
+//passing down setActiveRoom function and activeRoom state to MessageList
+                    setActiveRoom={this.setActiveRoom}
+                    activeRoom={this.state.activeRoom}/>
               </span>
           </div>
         </div>

@@ -4,12 +4,7 @@ class MessageList extends Component {
     constructor(props) {
       super(props)
       this.state = {
-    	   messages: [
-           { username: " " },
-    	     { content:  " " },
-    	     { sentAt: " " },
-           { roomId: " " }
-    	   ]
+    	   messages: []
 	     };
       this.messageRef = this.props.firebase.database().ref('messages');
     }
@@ -34,11 +29,11 @@ class MessageList extends Component {
       return(
         <div className="messageList">
            {
-             this.state.messages.map( (message) =>
+             this.state.messages.filter(a => a.roomId === this.state.activeRoomId).map( (message) =>
 	               <span key={message.key}>
                       <p>{message.username}</p>
                       <p>{message.content}</p>
-                      <p className="time-stamp">{message.sentAt}</p>
+                      <p>{message.sentAt}</p>
                  </span>)
             }
         </div>

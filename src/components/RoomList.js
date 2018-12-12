@@ -36,13 +36,18 @@ class RoomList extends Component {
         });
 	  }
 
+    selectRoom(room) {
+        this.props.setActiveRoom(room);
+    }
+
     render(){
       return(
         <div className = "roomList">
           {
             this.state.rooms.map((room, index) =>
             <div className = "roomId"
-              key = {index}>
+              key = {index}
+              onClick = {() => this.props.setActiveRoom(index)}>
               {room.name}
             </div>)
           }
