@@ -19,14 +19,16 @@ class App extends Component {
     constructor(){
       super();
       this.state = {
-        	activeRoom: ''
-     };
+        activeRoom: []
+      }
     }
 
-    setActiveRoom(room){
+    setActiveRoom(e){
+      const activeRoom = e.target.key;
+      console.log(activeRoom);
       this.setState({
-        activeRoom: room
-      })
+        activeRoom: activeRoom
+      });
     }
 
     render() {
@@ -41,20 +43,11 @@ class App extends Component {
               <span>
                   <RoomList className="room-list"
                     firebase = {firebase}
-                    isActive={this.state.isActive}
-                		setActiveRoom={this.setActiveRoom.bind(this)}
-                    activeRoom={this.state.activeRoom}
-                		createRoom={(e) => this.createRoom(e)}
-                		handleChange={(e) => this.handleChange}
-                		handleClick={(e) => this.handleClick}
-                		roomMessages={this.state.roomMessages}/>
+                		setActiveRoom={e => this.setActiveRoom(e)}/>
               </span>
               <span>
                   <MessageList className="message-list"
-                    firebase = {firebase}
-                    isActive={this.state.isActive}
-    		            activeRoom={this.state.activeRoom}
-		                messages={this.state.messages}/>
+                    firebase = {firebase}/>
               </span>
           </div>
         </div>

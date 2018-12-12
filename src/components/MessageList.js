@@ -4,8 +4,13 @@ class MessageList extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        messages: '',
-      };
+    	   messages: [
+           { username: " " },
+    	     { content:  " " },
+    	     { sentAt: " " },
+           { roomId: " " }
+    	   ]
+	     };
       this.messageRef = this.props.firebase.database().ref('messages');
     }
 
@@ -21,12 +26,20 @@ class MessageList extends Component {
        });
     }
 
+    getTimeStamp() {
+   	   this.messagesRef.push({ sentAt: this.props.firebase.database.ServerValue.TIMESTAMP });
+ 	  }
+
     render(){
       return(
-        <div className="message-box">
-            {
-                this.state.messages.filter(a => a.roomId === activeRoom.key).map((messages) =>
-                <p>{messages.content}</p>)
+        <div className="messageList">
+           {
+             this.state.messages.map( (message) =>
+	               <span key={message.key}>
+                      <p>{message.username}</p>
+                      <p>{message.content}</p>
+                      <p className="time-stamp">{message.sentAt}</p>
+                 </span>)
             }
         </div>
       )

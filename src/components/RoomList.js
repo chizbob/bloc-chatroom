@@ -31,14 +31,10 @@ class RoomList extends Component {
     }
 
     handleChange(e){
-      this.setState({
-        newRoomName: e.target.value
-      });
-    }
-
-  	handleClick(room) {
-  	  this.props.setActiveRoom(room);
-  	}
+    	  this.setState({
+            newRoomName: e.target.value
+        });
+	  }
 
     render(){
       return(
@@ -46,8 +42,7 @@ class RoomList extends Component {
           {
             this.state.rooms.map((room, index) =>
             <div className = "roomId"
-              key = {index}
-              onClick={ (e) => this.handleClick(room) }>
+              key = {index}>
               {room.name}
             </div>)
           }
