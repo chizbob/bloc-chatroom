@@ -15,48 +15,48 @@ import MessageList from './components/MessageList';
   firebase.initializeApp(config);
 
 
-class App extends Component {
-    constructor(){
-      super();
-        this.state= {
-          activeRoom: ''
-      };
-      this.setActiveRoom = this.setActiveRoom.bind(this);
-    }
-//use room.key as an identifier for active room
-    setActiveRoom(room) {
-      this.setState({
-        activeRoom: room.key
-      });
-    }
+  class App extends Component {
+  constructor() {
+    super();
+    this.state= {
+      activeRoomName: '',
+      activeRoomId: ''
+    };
+    this.setActiveRoom = this.setActiveRoom.bind(this);
+  }
 
-    render() {
-      return (
-        <div className="container-fluid">
-          <div className="jumbotron">
-              <h1 className="display-4">Welcome to Bloc Chatrooms!</h1>
-              <p className="lead">Enjoy fun chats with your Bloc buddies.</p>
-              <hr className="my-4"/>
+  setActiveRoom(room) {
+    this.setState({
+      activeRoomId: room.key
+     });
+  }
+
+  render() {
+    return (
+      <div className="app">
+          <div className="jumbotron jumbotron-fluid">
+            <div className="container">
+              <h1 className="display-4">Bloc Chats!</h1>
+              <p className="lead">Enjoy fun in chatrooms with your Bloc buddies.</p>
+            </div>
           </div>
-          <div className="container">
+
+          <div style={{display: 'flex'}}>
               <span>
-                  <RoomList className="room-list"
-                    firebase = {firebase}
-//passing down setActiveRoom function and activeRoom state to RoomList
+                  <RoomList
+                    firebase={firebase}
                     setActiveRoom={this.setActiveRoom}
-                    activeRoom={this.state.activeRoom}/>
+                    activeRoomId={this.state.activeRoomId}/>
               </span>
               <span>
-                  <MessageList className="message-list"
-                    firebase = {firebase}
-//passing down setActiveRoom function and activeRoom state to MessageList
-                    setActiveRoom={this.setActiveRoom}
-                    activeRoom={this.state.activeRoom}/>
+                  <MessageList firebase={firebase}
+                    activeRoomId={this.state.activeRoomId}/>
               </span>
           </div>
-        </div>
-      );
-    }
+      </div>
+    );
+  }
 }
+
 
 export default App;
