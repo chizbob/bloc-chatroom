@@ -36,10 +36,6 @@ class RoomList extends Component {
         });
 	  }
 
-    selectRoom(room) {
-        this.props.setActiveRoom(room);
-    }
-
     render(){
       return(
         <div className = "roomList">
@@ -47,15 +43,16 @@ class RoomList extends Component {
             this.state.rooms.map((room, index) =>
             <div className = "roomId"
               key = {index}
-              onClick = {() => this.props.setActiveRoom(room)}>
+              onClick={ () => this.props.setActiveRoom(room)}>
               {room.name}
             </div>)
           }
 
-          <form onSubmit = { e => this.createRoom(e) }>
-             <input type="text" name="chatroom" value={this.state.newRoomName} placeholder="Name your room" onChange= { e => this.handleChange(e)} />
-             <input type="submit"/>
+          <form className="form-group" onSubmit={this.createRoom.bind(this)}>
+             <input className="form-control" type="text" name="chatroom" value={this.state.newRoomName} placeholder="Name your room" onChange= { e => this.handleChange(e)} />
+             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
+
         </div>
       )
     }

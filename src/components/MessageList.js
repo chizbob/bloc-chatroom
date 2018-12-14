@@ -22,20 +22,33 @@ class MessageList extends Component {
     }
 
     getTimeStamp() {
-   	   this.messagesRef.push({ sentAt: this.props.firebase.database.ServerValue.TIMESTAMP });
+   	   this.messagesRef.push({
+         sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
+       });
  	  }
+
+    // sendMessage(e) {
+    //   e.preventDefault();
+    //     this.messagesRef.push({
+    //       messages: newMessages
+    //     });
+    // }
 
     render(){
       return(
         <div className="messageList">
            {
-             this.state.messages.filter(a => a.roomId === this.state.activeRoom).map( (message) =>
+             this.state.messages.filter((message) => message.roomId === this.props.activeRoom).map( (message) =>
 	               <span key={message.key}>
                       <p>{message.username}</p>
                       <p>{message.content}</p>
                       <p>{message.sentAt}</p>
                  </span>)
             }
+            <div>
+                <input type="text" value="say" placeholder="Say something good" />
+                <button type="send">Send</button>
+            </div>
         </div>
       )
     }
