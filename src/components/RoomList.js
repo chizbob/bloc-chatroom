@@ -36,10 +36,6 @@ class RoomList extends Component {
     });
   }
 
-  // selectRoom(room) {
-  //   this.props.setActiveRoom(room);
-  // }
-
   render() {
     return (
       <section className="rooms" style={{width: 70 + '%'}}>
