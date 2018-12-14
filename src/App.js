@@ -18,16 +18,17 @@ import MessageList from './components/MessageList';
   class App extends Component {
   constructor() {
     super();
-    this.state= {
-      activeRoom: ''
-    };
+    this.state = {
+      activeRoom: {key: "empty"}
+    }
     this.setActiveRoom = this.setActiveRoom.bind(this);
   }
 
   setActiveRoom(room) {
-    this.setState({
-      activeRoom: room
-     });
+    this.setState( {
+        activeRoom: room
+    });
+    console.log(this.state.activeRoom);
   }
 
   render() {

@@ -15,7 +15,6 @@ class MessageList extends Component {
        this.messageRef.on('child_added', snapshot => {
          const message = snapshot.val();
          message.key = snapshot.key;
-         console.log(message.key);
          this.setState({
            messages: this.state.messages.concat(message)
          });
@@ -23,20 +22,19 @@ class MessageList extends Component {
     }
 
   render() {
-    return (
-      <section>
-            <div className="message-list">
-              {
-                this.state.messages.filter( (message) => message.roomId === this.props.activeRoom.key).map( (message) =>
-                   <span key={message.key}>
-                        <p>{message.username}</p>
-                        <p>{message.content}</p>
-                        <p>{message.sentAt}</p>
-                   </span>)
-              }
-            </div>
-      </section>
-  )};
+      return (
+        <section>
+        {
+              this.state.messages.filter( (message) => message.roomId === this.props.activeRoom.key).map( (message) =>
+                  <span key={message.key}>
+                      <p>{message.username}</p>
+                      <p>{message.content}</p>
+                      <p>{message.sentAt}</p>
+                  </span>)
+        }
+        </section>
+      )
+  }
 }
 
 
