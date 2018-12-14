@@ -19,15 +19,14 @@ import MessageList from './components/MessageList';
   constructor() {
     super();
     this.state= {
-      activeRoomName: '',
-      activeRoomId: ''
+      activeRoom: ''
     };
     this.setActiveRoom = this.setActiveRoom.bind(this);
   }
 
   setActiveRoom(room) {
     this.setState({
-      activeRoomId: room.key
+      activeRoom: room
      });
   }
 
@@ -46,11 +45,10 @@ import MessageList from './components/MessageList';
                   <RoomList
                     firebase={firebase}
                     setActiveRoom={this.setActiveRoom}
-                    activeRoomId={this.state.activeRoomId}/>
-              </span>
-              <span>
+                    activeRoom={this.state.activeRoom}/>
+
                   <MessageList firebase={firebase}
-                    activeRoomId={this.state.activeRoomId}/>
+                    activeRoom={this.state.activeRoom}/>
               </span>
           </div>
       </div>
