@@ -21,7 +21,7 @@ import User from './components/User';
     super();
     this.state = {
       activeRoom: {key: "empty"},
-      username: "Guest"
+      user: "Guest"
     }
     this.setActiveRoom = this.setActiveRoom.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -35,12 +35,12 @@ import User from './components/User';
 
   setUser(user){
     this.setState({
-      username: user
+      user: user.displayName
     })
   }
 
   render() {
-    console.log(`username at App: ${this.state.username}`)
+    console.log(`username at App: ${this.state.user}`)
     return (
       <div className="app">
           <div className="jumbotron jumbotron-fluid">
@@ -54,7 +54,7 @@ import User from './components/User';
               <User
                 firebase={firebase}
                 setUser={this.setUser}
-                username={this.state.username}/>
+                user={this.state.user}/>
           </div>
 
           <div className="room-container">

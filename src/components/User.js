@@ -21,11 +21,12 @@ class User extends Component {
   }
 
   render(){
-    console.log(`Username at User: ${this.props.username}`)
+    console.log(`Username at User: ${this.props.user}`)
     return(
       <div>
+      <span>Hi, {this.props.user}!</span>
         {
-            this.props.username == null ? <button type="button" onClick={() => this.signIn()}>Sign In</button> :
+            this.props.user == "Guest" ? <button type="button" onClick={() => this.signIn()}>Sign In</button> :
                   <button type="button" onClick={() => this.signOut()}>Sign Out</button>
         }
       </div>
