@@ -35,7 +35,7 @@ import User from './components/User';
 
   setUser(user){
     this.setState({
-      user: user
+      username: user
     })
   }
 

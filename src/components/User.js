@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 
 class User extends Component {
-  constructor(props){
-    super(props);
-  }
+  // constructor(props){
+  //   super(props);
+  // }
 
-  componentDidMount(){
+  componentDidUpdate(){
     this.props.firebase.auth().onAuthStateChanged(user => {
       this.props.setUser(user);
     });
+    console.log(`componentDidMount: ${this.props.username}`)
   }
 
   signIn(){
@@ -21,10 +22,11 @@ class User extends Component {
   }
 
   render(){
+    console.log(`User's Render: ${this.props.username}`);
     return(
       <div>
         {
-            this.props.user == null ? <button type="button" onClick={() => this.signIn()}>Sign In</button> :
+            this.props.username == null ? <button type="button" onClick={() => this.signIn()}>Sign In</button> :
                   <button type="button" onClick={() => this.signOut()}>Sign Out</button>
         }
       </div>
