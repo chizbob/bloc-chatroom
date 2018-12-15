@@ -42,7 +42,7 @@ import User from './components/User';
   render() {
     console.log(`username at App: ${this.state.user}`)
     return (
-      <div className="app">
+      <section className="app">
           <div className="jumbotron jumbotron-fluid">
               <div className="container">
                 <h1 className="display-4">Bloc Chats!</h1>
@@ -50,27 +50,26 @@ import User from './components/User';
               </div>
           </div>
 
-          <div className="user-container">
+          <aside className="user-container" style={{marginRight: 30 + 'px'}}>
+            <div style={{textAlign: 'right', marginRight: 20 + 'px'}}>
               <User
                 firebase={firebase}
                 setUser={this.setUser}
                 user={this.state.user}/>
-          </div>
-
-          <div className="room-container">
+            </div>
+          </aside>
+            <main style={{display: 'flex'}}>
               <RoomList
                 firebase={firebase}
                 setActiveRoom={this.setActiveRoom}
                 activeRoom={this.state.activeRoom}/>
-          </div>
 
-          <div className="message-container">
               <MessageList
                 firebase={firebase}
                 activeRoom={this.state.activeRoom}
                 user={this.state.user}/>
-          </div>
-      </div>
+            </main>
+      </section>
     );
   }
 }

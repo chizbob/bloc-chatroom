@@ -42,24 +42,23 @@ class RoomList extends Component {
           <div className="rooms-list">
             {
               this.state.rooms.map( (room, index) =>
-                <ul className="list-group">
-                  <li key={index} className="list-group-item" onClick={ () => this.props.setActiveRoom(room) }>
+                <ul className="nav flex-column" style={{paddingBottom: 20 + 'px'}}>
+                  <li key={index} className="nav-item" onClick={ () => this.props.setActiveRoom(room) }>
                   {room.name}
                   </li>
                 </ul>)
             }
           </div>
 
-          <form className="form-group" onSubmit={this.createRoom.bind(this)}>
+          <form className="form-group" style={{display: 'flex'}} onSubmit={this.createRoom.bind(this)}>
               <input
                 className="form-control"
                 type="text"
+                style={{width: 20 + '%'}}
                 placeholder="Name your room"
                 value={this.state.newRoomName}
                 onChange={this.handleChange.bind(this)} />
-              <button>
-                <input type="submit" value="Submit" className="btn btn-primary"/>
-              </button>
+              <button className="btn btn-light" style={{marginLeft: 10 + 'px'}}>Submit</button>
           </form>
       </section>
     );

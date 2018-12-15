@@ -24,10 +24,10 @@ class User extends Component {
     console.log(`Username at User: ${this.props.user}`)
     return(
       <div>
-      <span>Hi, {this.props.user}!</span>
+      <span style={{marginRight: 20 + 'px'}}>Hi, {this.props.user}!</span>
         {
-            this.props.user == "Guest" ? <button type="button" onClick={() => this.signIn()}>Sign In</button> :
-                  <button type="button" onClick={() => this.signOut()}>Sign Out</button>
+            this.props.user == "Guest" ? <button type="button" className="btn btn-light"> onClick={() => this.signIn()}>Sign In</button> :
+                  <button type="button" className="btn btn-light" onClick={() => this.signOut()}>Sign Out</button>
         }
       </div>
     )

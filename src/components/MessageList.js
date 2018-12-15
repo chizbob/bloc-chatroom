@@ -45,7 +45,7 @@ class MessageList extends Component {
 
   render() {
       return (
-        <section>
+        <section style={{textAlign: 'right'}}>
           <div className="message-box">{
           this.state.messages.filter(a=> a.roomId == this.props.activeRoom.key).map( (message) =>
               <span key={message.key}>
