@@ -65,8 +65,10 @@ import User from './components/User';
           </div>
 
           <div className="message-container">
-              <MessageList firebase={firebase}
-                activeRoom={this.state.activeRoom}/>
+              <MessageList
+                firebase={firebase}
+                activeRoom={this.state.activeRoom}
+                user={this.state.user}/>
           </div>
       </div>
     );
