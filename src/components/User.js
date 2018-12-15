@@ -5,11 +5,10 @@ class User extends Component {
   //   super(props);
   // }
 
-  componentDidUpdate(){
+  componentDidMount(){
     this.props.firebase.auth().onAuthStateChanged(user => {
       this.props.setUser(user);
     });
-    console.log(`componentDidMount: ${this.props.username}`)
   }
 
   signIn(){
@@ -22,7 +21,7 @@ class User extends Component {
   }
 
   render(){
-    console.log(`User's Render: ${this.props.username}`);
+    console.log(`Username at User: ${this.props.username}`)
     return(
       <div>
         {
