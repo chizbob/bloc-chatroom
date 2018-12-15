@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import './App.css';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 
   var config = {
     apiKey: "AIzaSyAZ-nh81214MgEN6E0-MO-rr18njhp0f8k",
@@ -19,9 +20,11 @@ import MessageList from './components/MessageList';
   constructor() {
     super();
     this.state = {
-      activeRoom: {key: "empty"}
+      activeRoom: {key: "empty"},
+      user: null
     }
     this.setActiveRoom = this.setActiveRoom.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   setActiveRoom(room) {
@@ -30,26 +33,38 @@ import MessageList from './components/MessageList';
     });
   }
 
+  setUser(user){
+    this.setState({
+      user: user
+    })
+  }
+
   render() {
     return (
       <div className="app">
           <div className="jumbotron jumbotron-fluid">
-            <div className="container">
-              <h1 className="display-4">Bloc Chats!</h1>
-              <p className="lead">Enjoy fun in chatrooms with your Bloc buddies.</p>
-            </div>
+              <div className="container">
+                <h1 className="display-4">Bloc Chats!</h1>
+                <p className="lead">Enjoy fun in chatrooms with your Bloc buddies.</p>
+              </div>
           </div>
 
-          <div style={{display: 'flex'}}>
-              <span>
-                  <RoomList
-                    firebase={firebase}
-                    setActiveRoom={this.setActiveRoom}
-                    activeRoom={this.state.activeRoom}/>
+          <div className="user-container">
+              <User
+                firebase={firebase}
+                setUser={this.setUser}/>
+          </div>
 
-                  <MessageList firebase={firebase}
-                    activeRoom={this.state.activeRoom}/>
-              </span>
+          <div className="room-container">
+              <RoomList
+                firebase={firebase}
+                setActiveRoom={this.setActiveRoom}
+                activeRoom={this.state.activeRoom}/>
+          </div>
+
+          <div className="message-container">
+              <MessageList firebase={firebase}
+                activeRoom={this.state.activeRoom}/>
           </div>
       </div>
     );

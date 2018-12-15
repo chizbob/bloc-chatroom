@@ -38,7 +38,7 @@ class RoomList extends Component {
 
   render() {
     return (
-      <section className="rooms" style={{width: 70 + '%'}}>
+      <section className="rooms">
           <div className="rooms-list">
             {
               this.state.rooms.map( (room, index) =>
