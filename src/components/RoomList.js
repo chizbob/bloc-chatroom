@@ -42,11 +42,9 @@ class RoomList extends Component {
           <div className="rooms-list">
             {
               this.state.rooms.map( (room, index) =>
-                <ul className="list-group">
                   <li key={index} className="list-group-item" onClick={ () => this.props.setActiveRoom(room) }>
                   {room.name}
-                  </li>
-                </ul>)
+                  </li>)
             }
           </div>
 
