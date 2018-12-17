@@ -21,13 +21,13 @@ class User extends Component {
   }
 
   render(){
-    console.log(`Username at User: ${this.props.user}`)
     return(
       <div>
-      <span style={{marginRight: 20 + 'px'}}>Hi, {this.props.user}!</span>
+      <span style={{marginRight: 20 + 'px'}}>Hi, {this.props.displayName}!</span>
         {
-            this.props.user == "Guest" ? <button type="button" className="btn btn-light"> onClick={() => this.signIn()}>Sign In</button> :
-                  <button type="button" className="btn btn-light" onClick={() => this.signOut()}>Sign Out</button>
+            this.props.displayName == "Guest" ?
+                <button type="button" className="btn btn-light" onClick={() => this.signIn()}>Sign In</button> :
+                <button type="button" className="btn btn-light" onClick={() => this.signOut()}>Sign Out</button>
         }
       </div>
     )

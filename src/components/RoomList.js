@@ -42,11 +42,9 @@ class RoomList extends Component {
           <div className="rooms-list">
             {
               this.state.rooms.map( (room, index) =>
-                <ul className="nav flex-column" style={{paddingBottom: 20 + 'px'}}>
                   <li key={index} className="nav-item" onClick={ () => this.props.setActiveRoom(room) }>
                   {room.name}
-                  </li>
-                </ul>)
+                  </li>)
             }
           </div>
 
@@ -54,7 +52,6 @@ class RoomList extends Component {
               <input
                 className="form-control"
                 type="text"
-                style={{width: 20 + '%'}}
                 placeholder="Name your room"
                 value={this.state.newRoomName}
                 onChange={this.handleChange.bind(this)} />

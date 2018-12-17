@@ -24,7 +24,6 @@ class MessageList extends Component {
 
   handleChange(e) {
     e.preventDefault();
-    console.log(e.target);
     this.setState({
       newMessage: e.target.value
     });
@@ -34,7 +33,7 @@ class MessageList extends Component {
     e.preventDefault();
     this.messageRef.push({
       content: this.state.newMessage,
-      username: this.props.user,
+      username: this.props.user.displayName,
       roomId: this.props.activeRoom.key,
       sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
     });
